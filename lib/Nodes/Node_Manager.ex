@@ -31,9 +31,20 @@ defmodule Nodes.NodeManager do
     {:reply, response, state}
   end
 
+  @impl true
+  def handle_cast(request, state) do
+    IO.puts("#{inspect(self())} mensaje recibido: '#{request}'.")
+    {:noreply, state}
+  end
+
   @spec call(any(), atom() | pid() | {atom(), any()} | {:via, atom(), any()}) :: :ok
   def call(message, pid) do
     IO.puts("Se envio el mensaje: '#{message}' a #{inspect(pid)}.")
     GenServer.call(pid, message)
+  end
+
+  def cast(server, message) do
+    IO.puts("Se envio el mensaje: '#{message}' a #{inspect(server)}.")
+    GenServer.cast(server, message)
   end
 end

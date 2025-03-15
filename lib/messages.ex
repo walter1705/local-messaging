@@ -1,5 +1,5 @@
 defmodule Messages do
-  alias Nodes.Node_Manager
+  alias Nodes.NodeManager
 
-  defdelegate start_link(name), to: Node_Manager
+  defdelegate start_link(name), to: NodeManager
 end
