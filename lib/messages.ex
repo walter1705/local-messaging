@@ -1,18 +1,5 @@
 defmodule Messages do
-  @moduledoc """
-  Documentation for `Messages`.
-  """
+  alias Nodes.Node_Manager
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Messages.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  defdelegate start_link(name), to: Node_Manager
 end
